@@ -31,6 +31,7 @@ GEM
       sass (>= 3.1)
     haml (4.0.5)
       tilt
+    libv8 (3.16.14.3)
     listen (2.6.2)
       celluloid (>= 0.15.2)
       celluloid-io (>= 0.15.0)
@@ -46,8 +47,12 @@ GEM
     rb-fsevent (0.9.4)
     rb-inotify (0.9.3)
       ffi (>= 0.5.0)
+    ref (1.0.5)
     sass (3.2.14)
     slop (3.4.7)
+    therubyracer (0.12.1)
+      libv8 (~> 3.16.14.0)
+      ref
     thor (0.18.1)
     tilt (2.0.0)
     timers (1.1.0)
@@ -60,3 +65,4 @@ DEPENDENCIES
   guard-coffeescript
   guard-haml
   guard-sass
+  therubyracer
