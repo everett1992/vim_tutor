@@ -25,28 +25,26 @@
         %em modes.
 
       %section
-        %h3 Vim <small>The modal editor</small>
+        %h2 Vim <small>The modal editor</small>
         %dl
-          %dt <code class="normal">Normal Mode:</code>
+          %dt <code class="normal">Normal</code> Mode:
           %dd
             Keys are mapped to commands. This is the default mode. Pressing
-            <kbd class='global'><abbr title='You can also use ctrl+[ instead of esc'>esc</abbr></kbd> from any other mode will return you to this mode.
-          %dt <code class='insert'>Insert Mode:</code>
+            <kbd><abbr title='You can also use ctrl+[ instead of esc'>esc</abbr></kbd> from any other mode will return you to this mode.
+            This is the mode you should spend the majority of your time in.
+          %dt <code class='insert'>Insert</code> Mode:
           %dd
             Typing a key will insert that character into the document.
-            There are several commands which will put you into insert mode, but
-            to explicitly enter insert mode with no other actions you must press
-            <kbd class='normal'><abbr title='Just so you know, commands in Vim are case sensitive. Be careful not to accidentally use the wrong case!'
-            >i</abbr></kbd>. 
-          %dt <code class='visual'>Visual Mode: </code>
+            Press <kbd class=normal>i</kbd> to enter <code class=insert>insert</code> mode.
+          %dt <code class='visual'>Visual</code> Mode: 
           %dd
             %p
               Highlight groups of text and perform commands on the selection. There
               are three sub-modes: <code class='visual'>Visual</code>, 
               <code class='visual'>Visual-Line</code>, and
               <code class='visual'>Visual-Block</code> which can be entered using
-              <kbd>v</kbd>, <kbd><abbr title='Note this is capital V, or shift+v'>V</abbr></kbd>
-              , and <kbd>ctrl+v</kbd> respectively.
+              <kbd class="visual">v</kbd>, <kbd class="visual"><abbr title='Note this is capital V, or shift+v'>V</abbr></kbd>
+              , and <kbd class="visual">ctrl+v</kbd> respectively.
             -#%p
               <code class='visual'>Visual mode</code> selects all text from the
               point the cursor was at when the mode was entered to the cursor,
@@ -59,22 +57,58 @@
               any character the cursor moves to.
         %p
         %p
-          The most basic way of using Vim is to immediately enter Insert Mode
+          The most basic way of using Vim is to immediately enter <code class=insert>insert</code> Mode
           upon opening a file, navigating using the arrow keys, and never returning
-          to <code class='normal'>Normal Mode</code> until exiting the file. Using Vim
+          to <code class='normal'>Normal</code> Mode until exiting the file. Using Vim
           this way makes using Vim like using a worse Notepad.
 
 
       %section
-        %h3 Talking with your editor <small>Vim's command syntax.</small>
+        %h2 Talking with your editor <small>Vim's command syntax.</small>
 
-        %ul
-          %li Nouns
-          %li Verbs
-          %li Adjectives
+        Vim's commands can be chained using a simple grammar.
+        Most vim commands can be classified as motions, actions, or modifiers.
+
+        %dl
+          %dt Motions
+          %dd
+            Vim uses <kbd class=normal>h</kbd>, <kbd class=normal>j</kbd>, <kbd class=normal>k</kbd>, and <kbd class=normal>l</kbd>
+            to move left, down, up, or right instead of the arrow keys, this keeps your hands on the home row.
+            <kbd class=normal>^</kbd>, and <kbd class=normal>$</kbd> will move the cursor to the end of the line.
+
+            There are motions for more advanced movements like next word, beginning of word and end of word,
+            (<kbd class=normal>w</kbd>, <kbd class=normal>b</kbd>, and <kbd class=normal>e</kbd>)
+            and the area between quotes, brackets, and tags
+            (<kbd class=normal>"</kbd>, <kbd class=normal>[</kbd>, and <kbd class=normal>t</kbd>).
+
+          %dt Actions
+          %dd
+            Action commands modify text. As mentioned earlier <kbd class=normal>i</kbd> will place you in <code class=insert>insert</code> mode at the current cursor position,
+            There are many ways to enter <code class=insert>insert</code> mode:
+            %ul
+              %li <kbd class=normal>I</kbd> inserts text at the beginning of a line,
+              %li <kbd class=normal>A</kbd> inserts text at the end of a line.
+              %li <kbd class=normal>o</kbd> inserts a new line below the current line (<kbd class=normal>O</kbd> above).
+              %li <kbd class=normal>C</kbd> deletes the text from the cursor to then end of the line and enters <code class=insert>insert</code> mode.
+
+            Many of Vim's action commands act on motion commands, e.g. the <kbd class=normal>d</kbd> command deletes motions.
+            %ul
+              %li <kbd class=normal>dw</kbd> will delete from the cursor to the end of the current word.
+              %li <kbd class=normal>d$</kbd> will delete from the cursor to the end of the current line (<kbd class=normal>D</kbd> is shorthand for this).
+
+            Other action commands that accept motions include change <kbd class=normal>c</kbd>, and yank <kbd class=normal>y</kbd>.
+            %ul
+              %li <kbd class=normal>cw</kbd> will delete from the cursor to the end of the current word then enter <code class=insert>insert</code> mode.
+              %li <kbd class=normal>y$</kbd> will yank (copy) the text from the cursor to the end of the line.
+
+            As you learn more actions and motions you can use them in combination. If you know what an action does, and what a movement does,
+            you'll know what the application of the action on the movement will do.
+
+
+          %dt Modifiers
 
       %section
-        %h3 Working Semantically <small>Working at the speed of thought.</small>
+        %h2 Working Semantically <small>Working at the speed of thought.</small>
 
 
 

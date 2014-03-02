@@ -1,3 +1,38 @@
+$normal-color: blue;
+$insert-color: green;
+$visual-color: red;
+
 body {
   background-image: url('assets/backgrounds/escheresque_ste_@2X.png');
+}
+
+kbd {
+  background-color: white;
+}
+
+code, kbd {
+  color: black;
+  font-weight: bold;
+
+  &.normal {
+    color: $normal-color;
+    background-color: lighten($normal-color, 45%);
+  }
+  &.insert {
+    color: $insert-color;
+    background-color: lighten($insert-color, 55%);
+  }
+  &.visual {
+    color: $visual-color;
+    background-color: lighten($visual-color, 45%);
+  }
+
+  abbr {
+    border-bottom-color: black !important;
+  }
+
+}
+
+dd {
+  margin-left: 2em;
 }
