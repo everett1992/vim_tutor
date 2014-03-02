@@ -28,16 +28,41 @@
         %h3 Vim <small>The modal editor</small>
         %dl
           %dt <code class="normal">Normal Mode:</code>
-          %dd Keys are mapped to commands.
-          %dt Visual Mode: 
-          %dd Highlight groups of text and perform commands on the selection
-          %dt Insert Mode:
-          %dd Actually inserts text. Typing a key will insert that character.
+          %dd
+            Keys are mapped to commands. This is the default mode. Pressing
+            <kbd class='global'><abbr title='You can also use ctrl+[ instead of esc'>esc</abbr></kbd> from any other mode will return you to this mode.
+          %dt <code class='insert'>Insert Mode:</code>
+          %dd
+            Typing a key will insert that character into the document.
+            There are several commands which will put you into insert mode, but
+            to explicitly enter insert mode with no other actions you must press
+            <kbd class='normal'><abbr title='Just so you know, commands in Vim are case sensitive. Be careful not to accidentally use the wrong case!'
+            >i</abbr></kbd>. 
+          %dt <code class='visual'>Visual Mode: </code>
+          %dd
+            %p
+              Highlight groups of text and perform commands on the selection. There
+              are three sub-modes: <code class='visual'>Visual</code>, 
+              <code class='visual'>Visual-Line</code>, and
+              <code class='visual'>Visual-Block</code> which can be entered using
+              <kbd>v</kbd>, <kbd><abbr title='Note this is capital V, or shift+v'>V</abbr></kbd>
+              , and <kbd>ctrl+v</kbd> respectively.
+            -#%p
+              <code class='visual'>Visual mode</code> selects all text from the
+              point the cursor was at when the mode was entered to the cursor,
+              following normal text flow.
+              <code class='visual'>Visual Line</code> selects the entirety of the
+              line from the line the cursor was on when the mode was entered to any
+              line the cursor moves to.
+              <code class='visual'>Visual Block</code> selects a rectangular area
+              from the character the cursor was on when the mode was entered to
+              any character the cursor moves to.
         %p
         %p
           The most basic way of using Vim is to immediately enter Insert Mode
           upon opening a file, navigating using the arrow keys, and never returning
-          to <code class='normal'>Normal Mode</code> until exiting the file. Using 
+          to <code class='normal'>Normal Mode</code> until exiting the file. Using Vim
+          this way makes using Vim like using a worse Notepad.
 
 
       %section
