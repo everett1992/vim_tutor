@@ -19,8 +19,21 @@
         modifying the action preformed by the command. Other editors are
         chordal, complex commands require pressing many keys at once.
 
+      %p
+        If you've ever opened vim and begun typing, you were probably confused
+        when you didn't see any text appear. This is because Vim relies on 
+        %em modes.
+
       %section
         %h3 Vim <small>The modal editor</small>
+        %dl
+          %dt Normal Mode:
+          %dd Keys are mapped to commands.
+          %dt Visual Mode: 
+          %dd Highlight groups of text and perform commands on the selection
+          %dt Insert Mode:
+          %dd Actually inserts text. Typing a key will insert that character.
+
 
       %section
         %h3 Talking with your editor <small>Vim's command syntax.</small>
