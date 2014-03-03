@@ -12,20 +12,17 @@
 
   %body
     .container
-      %img(src="assets/vim.svg")
-
+      .center
+        %img(src="assets/vim.svg")
       %p
-        Vim is melodic. Commands are chained one after the other, each
-        modifying the action preformed by the command. Other editors are
-        chordal, complex commands require pressing many keys at once.
-
-      %p
-        If you've ever opened vim and begun typing, you were probably confused
+        Vim can be a confusing editor to learn.
+        If you've ever opened Vim and begun typing, you were probably confused
         when you didn't see any text appear. This is because Vim relies on 
-        %em modes.
+        <em>modes</em>. Once you learn to speak to Vim it will become the only editor
+        you want to use.
 
       %section
-        %h2 Vim <small>The modal editor</small>
+        %h1 Vim <small>The modal editor</small>
         %dl
           %dt <code class="normal">Normal</code> Mode:
           %dd
@@ -43,18 +40,8 @@
               are three sub-modes: <code class='visual'>Visual</code>, 
               <code class='visual'>Visual-Line</code>, and
               <code class='visual'>Visual-Block</code> which can be entered using
-              <kbd class="visual">v</kbd>, <kbd class="visual"><abbr title='Note this is capital V, or shift+v'>V</abbr></kbd>
+              <kbd class=normal>v</kbd>, <kbd class=normal><abbr title='Note this is capital V, or shift+v'>V</abbr></kbd>
               , and <kbd class="visual">ctrl+v</kbd> respectively.
-            -#%p
-              <code class='visual'>Visual mode</code> selects all text from the
-              point the cursor was at when the mode was entered to the cursor,
-              following normal text flow.
-              <code class='visual'>Visual Line</code> selects the entirety of the
-              line from the line the cursor was on when the mode was entered to any
-              line the cursor moves to.
-              <code class='visual'>Visual Block</code> selects a rectangular area
-              from the character the cursor was on when the mode was entered to
-              any character the cursor moves to.
         %p
         %p
           The most basic way of using Vim is to immediately enter <code class=insert>insert</code> Mode
@@ -64,55 +51,119 @@
 
 
       %section
-        %h2 Talking with your editor <small>Vim's command syntax.</small>
+        %h1 Talking with your editor <small>Vim's command syntax.</small>
 
         Vim's commands can be chained using a simple grammar.
-        Most vim commands can be classified as motions, actions, or modifiers.
+        Most Vim commands can be classified as motions, actions, or modifiers.
 
         %dl
           %dt Motions
           %dd
-            Vim uses <kbd class=normal>h</kbd>, <kbd class=normal>j</kbd>, <kbd class=normal>k</kbd>, and <kbd class=normal>l</kbd>
-            to move left, down, up, or right instead of the arrow keys, this keeps your hands on the home row.
-            <kbd class=normal>^</kbd>, and <kbd class=normal>$</kbd> will move the cursor to the end of the line.
+            %p
+              Vim uses <kbd class=normal>h</kbd>, <kbd class=normal>j</kbd>, <kbd class=normal>k</kbd>, and <kbd class=normal>l</kbd>
+              to move left, down, up, or right instead of the arrow keys, this keeps your hands on the home row.
+              <kbd class=normal>^</kbd>, and <kbd class=normal>$</kbd> will move the cursor to the end of the line.
 
-            There are motions for more advanced movements like next word, beginning of word and end of word,
-            (<kbd class=normal>w</kbd>, <kbd class=normal>b</kbd>, and <kbd class=normal>e</kbd>)
-            and the area between quotes, brackets, and tags
-            (<kbd class=normal>"</kbd>, <kbd class=normal>[</kbd>, and <kbd class=normal>t</kbd>).
+            %p
+              There are motions for more advanced movements like next word, beginning of word and end of word,
+              (<kbd class=normal>w</kbd>, <kbd class=normal>b</kbd>, and <kbd class=normal>e</kbd>)
+              and the area between quotes, brackets, and tags
+              (<kbd class=normal>"</kbd>, <kbd class=normal>[</kbd>, and <kbd class=normal>t</kbd>).
+              There are some motions that take arguments like <kbd class=normal>f</kbd> and <kbd class=normal>t</kbd> which
+              move the cursor to the entered key, or before the entered key. <kbd class=normal>fx</kbd> will move your cursor
+              to the next 'x' that appears in the document, while <kbd class=normal>tx</kbd> would place the cursor to the character
+              before the next 'x'. You can search for text using <kbd class=normal>/</kbd>, and cycle through the results with <kbd class=normal>n</kbd> and
+              <kbd class=normal>N</kbd>.
+
 
           %dt Actions
           %dd
-            Action commands modify text. As mentioned earlier <kbd class=normal>i</kbd> will place you in <code class=insert>insert</code> mode at the current cursor position,
-            There are many ways to enter <code class=insert>insert</code> mode:
-            %ul
-              %li <kbd class=normal>I</kbd> inserts text at the beginning of a line,
-              %li <kbd class=normal>A</kbd> inserts text at the end of a line.
-              %li <kbd class=normal>o</kbd> inserts a new line below the current line (<kbd class=normal>O</kbd> above).
-              %li <kbd class=normal>C</kbd> deletes the text from the cursor to then end of the line and enters <code class=insert>insert</code> mode.
+            %p
+              Action commands modify text. As mentioned earlier <kbd class=normal>i</kbd> will place you in <code class=insert>insert</code> mode at the current cursor position,
+              There are many ways to enter <code class=insert>insert</code> mode:
+              %ul
+                %li <kbd class=normal>I</kbd> Inserts text at the beginning of a line,
+                %li <kbd class=normal>A</kbd> Inserts text at the end of a line.
+                %li <kbd class=normal>o</kbd> Inserts a new line below the current line (<kbd class=normal>O</kbd> above).
+                %li <kbd class=normal>C</kbd> Deletes the text from the cursor to then end of the line and enters <code class=insert>insert</code> mode.
+                %li <kbd class=normal>x</kbd> Deletes the character under the cursor.
+                %li <kbd class=normal>u</kbd> Undoes the previous command.
+                %li <kbd class=normal>ctrl+r</kbd> Redo.
 
-            Many of Vim's action commands act on motion commands, e.g. the <kbd class=normal>d</kbd> command deletes motions.
-            %ul
-              %li <kbd class=normal>dw</kbd> will delete from the cursor to the end of the current word.
-              %li <kbd class=normal>d$</kbd> will delete from the cursor to the end of the current line (<kbd class=normal>D</kbd> is shorthand for this).
+            %p
+              Many of Vim's action commands act on motion commands, e.g. the <kbd class=normal>d</kbd> command deletes motions.
+              %ul
+                %li <kbd class=normal>dw</kbd> Will delete from the cursor to the end of the current word.
+                %li <kbd class=normal>d$</kbd> Will delete from the cursor to the end of the current line (<kbd class=normal>D</kbd> is shorthand for this).
 
-            Other action commands that accept motions include change <kbd class=normal>c</kbd>, and yank <kbd class=normal>y</kbd>.
-            %ul
-              %li <kbd class=normal>cw</kbd> will delete from the cursor to the end of the current word then enter <code class=insert>insert</code> mode.
-              %li <kbd class=normal>y$</kbd> will yank (copy) the text from the cursor to the end of the line.
+            %p
+              Other action commands that accept motions include change <kbd class=normal>c</kbd>, and yank <kbd class=normal>y</kbd>.
+              %ul
+                %li <kbd class=normal>cw</kbd> Will delete from the cursor to the end of the current word then enter <code class=insert>insert</code> mode.
+                %li <kbd class=normal>y$</kbd> Will yank (copy) the text from the cursor to the end of the line.
 
-            As you learn more actions and motions you can use them in combination. If you know what an action does, and what a movement does,
-            you'll know what the application of the action on the movement will do.
+              As you learn more actions and motions you can use them in combination. If you know what an action does, and what a movement does,
+              you'll know what the application of the action on the movement will do.
 
 
           %dt Modifiers
+          %dd
+            %p
+              Modifiers, such as 'a' and 'inner' (<kbd class=normal>a</kbd> and <kbd class=normal>i</kbd>, respectively) enhance the meaning of a motion.
+              Unlike <kbd class=normal>dw</kbd> that deletes from the cursor position
+              to the beginning of the next word, <kbd class=normal>diw</kbd> will delete the entire word, even the part before the cursor.
+              There are many motions that can only be invoked with an action and a modifier like <kbd class=normal>)</kbd>, <kbd class=normal>]</kbd>, <kbd class=normal>"</kbd>, <kbd class=normal>t</kbd>.
+              %ul
+                %li <kbd class=normal>i)</kbd> The text between matching parentheses.
+                %li <kbd class=normal>a)</kbd> The text between and the matching parentheses.
+
+                %li <kbd class=normal>it</kbd> The inner text of the current HTML style tag.
+                %li <kbd class=normal>at</kbd> The whole of the current HTML style tag.
+
+                %li <kbd class=normal>iw</kbd> The text from the beginning of the current word until the end.
+                %li <kbd class=normal>aw</kbd> The text from the beginning of the current word, until the start of the next word.
+
+            %p
+              Motions can also be modified by numbers so <kbd class=normal>d4w</kbd> will delete four words.
 
       %section
-        %h2 Working Semantically <small>Working at the speed of thought.</small>
+        %h1 Working Semantically <small>Working at the speed of thought.</small>
+        %p
+          You may have noticed that there are different ways to accomplish the same task in Vim.
+          <kbd class=normal>cw</kbd> does the same thing as <kbd class=normal>dw</kbd> followed by <kbd class=normal>i</kbd>.
+          You could even mash <kbd class=normal>x</kbd> to delete each character under the cursor until the word is deleted, then press <kbd class=normal>i</kbd>.
+          <kbd class=normal>cw</kbd> is one discrete command, one <kbd class=normal>u</kbd> will undo the whole action while other commands would require multiple undos.
+          Vim remembers your last command, and you can repeat it with <kbd class=normal>.</kbd>.
+          See how below we use <kbd class=normal>ciw</kbd> to make a repeatable action, which we then repeat with <kbd class=normal>.</kbd>.
+
+          .center
+            %img.slideshow(data-image-name='repeat' data-max=10 width=650 height=346)
+
+          If you want to change a functions arguments in less sophisticated editors you would use the mouse or arrow keys to move to the first
+          parentheses, then press delete until you have reached the next parentheses. In vim you can do this using <kbd class=normal>f(ci)</kbd>.
+          Then if you have to replace the same arguments again you can just press <kbd class=normal>.</kbd>.
+
+      %section
+        %h1 Resources
+        %p
+          %ul
+            %li
+              %a(href="http://stackoverflow.com/questions/1218390/what-is-your-most-productive-shortcut-with-vim/1220118#1220118")
+                Your Problem with Vim Is That You Don't Grok Vi
+            %li
+              %a(href="http://www.viemu.com/vi-vim-cheat-sheet.gif")
+                Vim Cheat Sheet
+            %li
+              %a(href="http://vimcasts.org")
+                Vimcasts
+            %li
+              %a(href="http://vim-adventures.com/")
+                Vim Adventures
 
 
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    %script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js")
+    <!-- jQuery  -->
+    %script(src="http://code.jquery.com/jquery-2.1.0.min.js")
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    %script(src="bootstrap/js/bootstrap.js")
+    %script(src="assets/bootstrap/js/bootstrap.js")
+    %script(src="app.js")

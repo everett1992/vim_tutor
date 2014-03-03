@@ -4,10 +4,20 @@ $visual-color: red;
 
 body {
   background-image: url('assets/backgrounds/escheresque_ste_@2X.png');
+  font-size: 30px;
 }
 
 kbd {
   background-color: white;
+}
+
+h1 {
+  text-align: center;
+  font-size: 40px;
+}
+
+section {
+  padding-top: 40px;
 }
 
 code, kbd {
@@ -35,4 +45,8 @@ code, kbd {
 
 dd {
   margin-left: 2em;
+}
+div.center{
+  text-align: center;
+  padding: 20px;
 }
