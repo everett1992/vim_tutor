@@ -1,0 +1,35 @@
+body {
+  background-image: url("assets/backgrounds/escheresque_ste_@2X.png");
+  font-size: 30px; }
+
+kbd {
+  background-color: white; }
+
+h1 {
+  text-align: center;
+  font-size: 40px; }
+
+section {
+  padding-top: 40px; }
+
+code, kbd {
+  color: black;
+  font-weight: bold; }
+  code.normal, kbd.normal {
+    color: blue;
+    background-color: #e5e5ff; }
+  code.insert, kbd.insert {
+    color: green;
+    background-color: #9aff9a; }
+  code.visual, kbd.visual {
+    color: red;
+    background-color: #ffe5e5; }
+  code abbr, kbd abbr {
+    border-bottom-color: black !important; }
+
+dd {
+  margin-left: 2em; }
+
+div.center {
+  text-align: center;
+  padding: 20px; }

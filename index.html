@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <meta content='IE=edge' http-equiv='X-UA-Compatible'>
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <title>Vim Tutor</title>
+    <link href='assets/bootstrap/css/bootstrap.css' rel='stylesheet'>
+    <link href='style.css' rel='stylesheet'>
+  </head>
+  <body>
+    <div class='container'>
+      <div class='center'>
+        <img src='assets/vim.svg'>
+      </div>
+      <p>
+        Vim can be a confusing editor to learn.
+        If you've ever opened Vim and begun typing, you were probably confused
+        when you didn't see any text appear. This is because Vim relies on
+        <em>modes</em>. Once you learn to speak to Vim it will become the only editor
+        you want to use.
+      </p>
+      <section>
+        <h1>Vim <small>The modal editor</small></h1>
+        <dl>
+          <dt><code class="normal">Normal</code> Mode:</dt>
+          <dd>
+            Keys are mapped to commands. This is the default mode. Pressing
+            <kbd><abbr title='You can also use ctrl+[ instead of esc'>esc</abbr></kbd> from any other mode will return you to this mode.
+            This is the mode you should spend the majority of your time in.
+          </dd>
+          <dt><code class='insert'>Insert</code> Mode:</dt>
+          <dd>
+            Typing a key will insert that character into the document.
+            Press <kbd class=normal>i</kbd> to enter <code class=insert>insert</code> mode.
+          </dd>
+          <dt><code class='visual'>Visual</code> Mode:</dt>
+          <dd>
+            <p>
+              Highlight groups of text and perform commands on the selection. There
+              are three sub-modes: <code class='visual'>Visual</code>,
+              <code class='visual'>Visual-Line</code>, and
+              <code class='visual'>Visual-Block</code> which can be entered using
+              <kbd class=normal>v</kbd>, <kbd class=normal><abbr title='Note this is capital V, or shift+v'>V</abbr></kbd>
+              , and <kbd class="visual">ctrl+v</kbd> respectively.
+            </p>
+          </dd>
+        </dl>
+        <p></p>
+        <p>
+          The most basic way of using Vim is to immediately enter <code class=insert>insert</code> Mode
+          upon opening a file, navigating using the arrow keys, and never returning
+          to <code class='normal'>Normal</code> Mode until exiting the file. Using Vim
+          this way makes using Vim like using a worse Notepad.
+        </p>
+      </section>
+      <section>
+        <h1>Talking with your editor <small>Vim's command syntax.</small></h1>
+        Vim's commands can be chained using a simple grammar.
+        Most Vim commands can be classified as motions, actions, or modifiers.
+        <dl>
+          <dt>Motions</dt>
+          <dd>
+            <p>
+              Vim uses <kbd class=normal>h</kbd>, <kbd class=normal>j</kbd>, <kbd class=normal>k</kbd>, and <kbd class=normal>l</kbd>
+              to move left, down, up, or right instead of the arrow keys, this keeps your hands on the home row.
+              <kbd class=normal>^</kbd>, and <kbd class=normal>$</kbd> will move the cursor to the end of the line.
+            </p>
+            <p>
+              There are motions for more advanced movements like next word, beginning of word and end of word,
+              (<kbd class=normal>w</kbd>, <kbd class=normal>b</kbd>, and <kbd class=normal>e</kbd>)
+              and the area between quotes, brackets, and tags
+              (<kbd class=normal>"</kbd>, <kbd class=normal>[</kbd>, and <kbd class=normal>t</kbd>).
+              There are some motions that take arguments like <kbd class=normal>f</kbd> and <kbd class=normal>t</kbd> which
+              move the cursor to the entered key, or before the entered key. <kbd class=normal>fx</kbd> will move your cursor
+              to the next 'x' that appears in the document, while <kbd class=normal>tx</kbd> would place the cursor to the character
+              before the next 'x'. You can search for text using <kbd class=normal>/</kbd>, and cycle through the results with <kbd class=normal>n</kbd> and
+              <kbd class=normal>N</kbd>.
+            </p>
+          </dd>
+          <dt>Actions</dt>
+          <dd>
+            <p>
+              Action commands modify text. As mentioned earlier <kbd class=normal>i</kbd> will place you in <code class=insert>insert</code> mode at the current cursor position,
+              There are many ways to enter <code class=insert>insert</code> mode:
+              <ul>
+                <li><kbd class=normal>I</kbd> Inserts text at the beginning of a line,</li>
+                <li><kbd class=normal>A</kbd> Inserts text at the end of a line.</li>
+                <li><kbd class=normal>o</kbd> Inserts a new line below the current line (<kbd class=normal>O</kbd> above).</li>
+                <li><kbd class=normal>C</kbd> Deletes the text from the cursor to then end of the line and enters <code class=insert>insert</code> mode.</li>
+                <li><kbd class=normal>x</kbd> Deletes the character under the cursor.</li>
+                <li><kbd class=normal>u</kbd> Undoes the previous command.</li>
+                <li><kbd class=normal>ctrl+r</kbd> Redo.</li>
+              </ul>
+            </p>
+            <p>
+              Many of Vim's action commands act on motion commands, e.g. the <kbd class=normal>d</kbd> command deletes motions.
+              <ul>
+                <li><kbd class=normal>dw</kbd> Will delete from the cursor to the end of the current word.</li>
+                <li><kbd class=normal>d$</kbd> Will delete from the cursor to the end of the current line (<kbd class=normal>D</kbd> is shorthand for this).</li>
+              </ul>
+            </p>
+            <p>
+              Other action commands that accept motions include change <kbd class=normal>c</kbd>, and yank <kbd class=normal>y</kbd>.
+              <ul>
+                <li><kbd class=normal>cw</kbd> Will delete from the cursor to the end of the current word then enter <code class=insert>insert</code> mode.</li>
+                <li><kbd class=normal>y$</kbd> Will yank (copy) the text from the cursor to the end of the line.</li>
+              </ul>
+              As you learn more actions and motions you can use them in combination. If you know what an action does, and what a movement does,
+              you'll know what the application of the action on the movement will do.
+            </p>
+          </dd>
+          <dt>Modifiers</dt>
+          <dd>
+            <p>
+              Modifiers, such as 'a' and 'inner' (<kbd class=normal>a</kbd> and <kbd class=normal>i</kbd>, respectively) enhance the meaning of a motion.
+              Unlike <kbd class=normal>dw</kbd> that deletes from the cursor position
+              to the beginning of the next word, <kbd class=normal>diw</kbd> will delete the entire word, even the part before the cursor.
+              There are many motions that can only be invoked with an action and a modifier like <kbd class=normal>)</kbd>, <kbd class=normal>]</kbd>, <kbd class=normal>"</kbd>, <kbd class=normal>t</kbd>.
+              <ul>
+                <li><kbd class=normal>i)</kbd> The text between matching parentheses.</li>
+                <li><kbd class=normal>a)</kbd> The text between and the matching parentheses.</li>
+                <li><kbd class=normal>it</kbd> The inner text of the current HTML style tag.</li>
+                <li><kbd class=normal>at</kbd> The whole of the current HTML style tag.</li>
+                <li><kbd class=normal>iw</kbd> The text from the beginning of the current word until the end.</li>
+                <li><kbd class=normal>aw</kbd> The text from the beginning of the current word, until the start of the next word.</li>
+              </ul>
+            </p>
+            <p>
+              Motions can also be modified by numbers so <kbd class=normal>d4w</kbd> will delete four words.
+            </p>
+          </dd>
+        </dl>
+      </section>
+      <section>
+        <h1>Working Semantically <small>Working at the speed of thought.</small></h1>
+        <p>
+          You may have noticed that there are different ways to accomplish the same task in Vim.
+          <kbd class=normal>cw</kbd> does the same thing as <kbd class=normal>dw</kbd> followed by <kbd class=normal>i</kbd>.
+          You could even mash <kbd class=normal>x</kbd> to delete each character under the cursor until the word is deleted, then press <kbd class=normal>i</kbd>.
+          <kbd class=normal>cw</kbd> is one discrete command, one <kbd class=normal>u</kbd> will undo the whole action while other commands would require multiple undos.
+          Vim remembers your last command, and you can repeat it with <kbd class=normal>.</kbd>.
+          See how below we use <kbd class=normal>ciw</kbd> to make a repeatable action, which we then repeat with <kbd class=normal>.</kbd>.
+          <div class='center'>
+            <img class='slideshow' data-image-name='repeat' data-max='10' height='346' width='650'>
+          </div>
+          If you want to change a functions arguments in less sophisticated editors you would use the mouse or arrow keys to move to the first
+          parentheses, then press delete until you have reached the next parentheses. In vim you can do this using <kbd class=normal>f(ci)</kbd>.
+          Then if you have to replace the same arguments again you can just press <kbd class=normal>.</kbd>.
+        </p>
+      </section>
+      <section>
+        <h1>Resources</h1>
+        <p>
+          <ul>
+            <li>
+              <a href='http://stackoverflow.com/questions/1218390/what-is-your-most-productive-shortcut-with-vim/1220118#1220118'>
+                Your Problem with Vim Is That You Don't Grok Vi
+              </a>
+            </li>
+            <li>
+              <a href='http://www.viemu.com/vi-vim-cheat-sheet.gif'>
+                Vim Cheat Sheet
+              </a>
+            </li>
+            <li>
+              <a href='http://vimcasts.org'>
+                Vimcasts
+              </a>
+            </li>
+            <li>
+              <a href='http://vim-adventures.com/'>
+                Vim Adventures
+              </a>
+            </li>
+          </ul>
+        </p>
+      </section>
+    </div>
+    <!-- jQuery  -->
+    <script src='http://code.jquery.com/jquery-2.1.0.min.js'></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src='assets/bootstrap/js/bootstrap.js'></script>
+    <script src='app.js'></script>
+  </body>
+</html>
