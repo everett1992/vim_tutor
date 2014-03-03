@@ -2,6 +2,9 @@ body {
   background-image: url("assets/backgrounds/escheresque_ste_@2X.png");
   font-size: 30px; }
 
+body > .container {
+  background-color: rgba(90, 90, 90, 0.5); }
+
 kbd {
   background-color: white; }
 
