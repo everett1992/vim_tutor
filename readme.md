@@ -7,7 +7,7 @@ HTML experience:
   - Caleb Everett: 1 year
   - Eric Palace:  2 months
 
-The web page is available at 
+The web page is available at http://everett1992.github.io/vim_tutor/
 
 ## Need Finding
 
